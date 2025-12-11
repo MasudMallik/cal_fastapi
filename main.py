@@ -5,8 +5,8 @@ from fastapi.responses import HTMLResponse
 
 app=FastAPI()
 
-app.mount("/static",StaticFiles(directory="calculator/frontend/static"),name="static")
-template=Jinja2Templates(directory="calculator/frontend/templates")
+app.mount("/static",StaticFiles(directory="frontend/static"),name="static")
+template=Jinja2Templates(directory="frontend/templates")
 
 global ans,operator,first,second
 ans=0
@@ -47,3 +47,4 @@ async def cal(request:Request,key:str=Form(...)):
             second=""
             ans=0
         return template.TemplateResponse("home.html",{"request":request,"result":first})
+
